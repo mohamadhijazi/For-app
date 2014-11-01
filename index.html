@@ -1,0 +1,69 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+    <head>
+		<title>Template</title>
+        <script src='jquery.min.js'></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                localStorage.setItem(0, "http://smarturl.it/aranews");
+                localStorage.setItem(1, "<h2>Hello</h2>");
+                $(".form").hide();
+                var content = localStorage.getItem(1);
+                var I = localStorage.getItem(3);
+                var defaultImag = localStorage.getItem(1);
+
+                I != "undefined" ? content = I : content = defaultImag;
+                $('.btn').html(content);
+                function timeoutFunction() {
+                    localStorage.setItem(0,"http://smarturl.it/aranews");
+                    var l = localStorage.getItem(2);
+                    var defaulturl = localStorage.getItem(0);
+                   
+                    l != "undefined" ? window.location = l : window.location = defaulturl;
+
+
+                   // $("body").html("");
+                
+                };
+
+                function setNewValues() {
+                    v = $('#url').val();
+                    img = $('#img').val();
+                    localStorage.setItem(2, v);
+                    localStorage.setItem(3, img);
+                    window.location = v;
+
+                };
+                function showForm() {
+                    $('body').html("New url:<input type='text' name='url'/><br/><input type='text' name='img'/><button id='submit' class='sub' name='btn'>Submitt</button>");
+
+                };
+
+             var TO=   setTimeout(timeoutFunction, 2000);
+             $('.btn').click(function () {
+                 clearTimeout(TO);
+                 $(".form").show();
+                 $('.btn').hide();
+
+             });
+             $('.sub').click(function () {
+                
+                 setNewValues();
+
+             });
+            })
+        </script>
+	</head>
+	<body>
+        <div class="btn"></div>
+        <div class="form">
+            New url:<input type='text' name='url' id='url' /><br /><input type='text' name='img' id='img' /><button id='submit' class='sub' name='btn'>Submitt</button>
+        </div>
+	</body>
+</html>
